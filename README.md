@@ -8,21 +8,31 @@ Easier to understand when some examples are given:
 
 $ actual pacman command + option ----> alpm command + option
 
-$ sudo pacman -Syu        -----> alpm update
+$ sudo pacman -Syu        -----> alpm update <br>
+
 $ ------------------------------------------------------------
-$ sudo pacman -S package  -----> alpm install package
-$ sudo pacman -R package  -----> alpm remove package
-$ sudo pacman -Rs package -----> alpm removedeps package
+
+$ sudo pacman -S package  -----> alpm install package <br>
+$ sudo pacman -R package  -----> alpm remove package <br>
+$ sudo pacman -Rs package -----> alpm removedeps package<br>
+
 $ ------------------------------------------------------------
-$ pacman -Ss string       -----> alpm search string
-$ pacman -Qs string       -----> alpm local-search string
+
+$ pacman -Ss string       -----> alpm search string <br>
+$ pacman -Qs string       -----> alpm local-search string <br>
+
 $ ------------------------------------------------------------
-$ pacman -Si package      -----> alpm info package
-$ pacman -Qi package      -----> alpm local-info package
+
+$ pacman -Si package      -----> alpm info package <br>
+$ pacman -Qi package      -----> alpm local-info package <br>
+
 $ ------------------------------------------------------------
-$ pacman -Ql package      -----> alpm list-files package
+
+$ pacman -Ql package      -----> alpm list-files package <br>
+
 $ ------------------------------------------------------------
-$ pacman -Sl group        -----> alpm list-group group
+
+$ pacman -Sl group        -----> alpm list-group group <br>
 
 These are the feature to implement for 0.1.0 version:
 - commands listed above
