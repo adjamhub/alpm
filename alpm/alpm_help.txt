@@ -1,6 +1,8 @@
 alpm - Arch Linux Package Manager 
 
-This is just an attempt, made for fun, to implement a basic pacman alternative with easy-to-remember (at least, for me) options.
+This is just an attempt, made for fun, to implement a basic pacman alternative 
+with easy-to-remember (at least, for me) options.
+
 It will become also an AUR helper.
 
 Easier to understand when some examples are given:

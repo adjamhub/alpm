@@ -1,17 +1,23 @@
 # Andrea Diamantini
 # ALPM Project
 
-import config
+from alpm import config
 
 import sys
 import subprocess
+from importlib import resources
+
+#config = importlib.import_module('config')
+# ---------------------------------------------------------------
 
 def printHelp():
-    file = open("alpm_help.txt","r")
+    file = resources.open_text("alpm", "alpm_help.txt")
     content = file.read()
     file.close()
     print(content)
     return
+
+# ---------------------------------------------------------------
 
 def printHelpCommand(command:str):
     print("help about", command)
@@ -21,33 +27,40 @@ def printHelpCommand(command:str):
     
     print(f"alpm {command} --->", " ".join(config.commands[command]))
     return
+
 # ---------------------------------------------------------------
 
-commandList = sys.argv
+def run() -> int:
+    commandList = sys.argv
 
-if len(commandList) <= 1:
-    printHelp()
-    exit(1)
-
-command = commandList[1]
-
-if command == "help":
-    if len(commandList) == 2:
+    if len(commandList) <= 1:
         printHelp()
-    else:
+        return 1
+
+    command = commandList[1]
+
+    if command == "help":
+        if len(commandList) == 2:
+            printHelp()
+            return 1
+        
         printHelpCommand(commandList[2])
-    exit(2)
-    
-if command not in config.commands:
-    printHelp()
-    exit(1)
+        return 2
+        
+    if command not in config.commands:
+        printHelp()
+        return 1
 
-pacmanCommand = config.commands[command]
-packages = commandList[2:]
+    pacmanCommand = config.commands[command]
+    packages = commandList[2:]
 
-print("COMMAND:", command)
-print("PACMAN:", pacmanCommand)
-print("PACKAGE(s):", packages)
-    
-subprocess.run( pacmanCommand + packages )
-exit(0)
+    print("COMMAND:", command)
+    print("PACMAN:", pacmanCommand)
+    print("PACKAGE(s):", packages)
+        
+    subprocess.run( pacmanCommand + packages )
+    return 0
+
+if __name__ == '__main__':
+    print("running main test...")
+    run()

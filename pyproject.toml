@@ -1,7 +1,24 @@
 [project]
 name = "alpm"
 version = "0.0.1"
-description = "Add your description here"
+description = "Just another Arch Linux Package Manager"
+authors = [ { name="Andrea Diamantini", email="adjam@proton.me" }, ]
 readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
 requires-python = ">=3.13"
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/adjamhub/alpm"
+Issues = "https://github.com/adjamhub/alpm/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+mypkg = ["*.txt"]
