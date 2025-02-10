@@ -2,11 +2,11 @@
 # ALPM Project
 
 __all__ = [
-    "config",    
+    "config",
     "main"
 ]
 
-# 
+#
 from alpm import main
-main.run()
 
+main.run()

@@ -1,16 +1,16 @@
 # Andrea Diamantini
 # ALPM Project
 
-from alpm import config
-
-import sys
 import subprocess
+import sys
 from importlib import resources
+
+from alpm import config
 
 #config = importlib.import_module('config')
 # ---------------------------------------------------------------
 
-def printHelp():
+def printHelp() -> None:
     file = resources.open_text("alpm", "alpm_help.txt")
     content = file.read()
     file.close()
@@ -24,7 +24,7 @@ def printHelpCommand(command:str):
     if command not in config.commands:
         print("Unknown command")
         return
-    
+
     print(f"alpm {command} --->", " ".join(config.commands[command]))
     return
 
@@ -43,10 +43,10 @@ def run() -> int:
         if len(commandList) == 2:
             printHelp()
             return 1
-        
+
         printHelpCommand(commandList[2])
         return 2
-        
+
     if command not in config.commands:
         printHelp()
         return 1
@@ -57,7 +57,7 @@ def run() -> int:
     print("COMMAND:", command)
     print("PACMAN:", pacmanCommand)
     print("PACKAGE(s):", packages)
-        
+
     subprocess.run( pacmanCommand + packages )
     return 0
 
